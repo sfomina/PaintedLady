@@ -31,11 +31,11 @@ courseCreate = "CREATE TABLE courses (code TEXT,mark INTEGER,id INTEGER);"
 #fill in tables
 def fillStudent():
     for row in student_reader:
-        c.execute("INSERT INTO students VALUES (row['name'], row['age'], row['id']);") 
+        c.execute('INSERT INTO students VALUES ("%s", %s, %s)' % (row['name'], row['age'], row['id']) + ';') 
 
 def fillCourses():
     for row in course_reader:
-        c.execute("INSERT INTO courses VALUES (row['code'], row['systems'],row['mark']);")
+        c.execute('INSERT INTO courses VALUES ("%s", %s, %s)' % (row['code'], row['id'],row['mark']) + ';')
     
 
 
